@@ -51,7 +51,7 @@ class SaveData
 		PAUSE_ON_FOCUS_LOST => true,
 		SNAP_CAMERA_ON_GAMEOVER => true,
 		COUNTERS_FONT => "Funkin",
-		OSU_MANIA_SIMULATION => true,
+		OSU_MANIA_SIMULATION => false,
 		ALLOW_ONLINE => false,
 		SMALL_RATING_SIZE => true,
 		LEGACY_RATINGS_STYLE => "Classic",

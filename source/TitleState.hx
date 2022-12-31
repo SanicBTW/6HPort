@@ -63,22 +63,8 @@ class TitleState extends MusicBeatState
 		FlxG.sound.muteKeys = muteKeys;
 		FlxG.sound.volumeDownKeys = volumeDownKeys;
 		FlxG.sound.volumeUpKeys = volumeUpKeys;
-		#if STORAGE_ACCESS
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
-		if (Permissions.hasPermission(Permissions.READ_EXTERNAL_STORAGE)
-			&& Permissions.hasPermission(Permissions.WRITE_EXTERNAL_STORAGE)
-			&& SaveData.get(ALLOW_FILESYS))
-		{
-			StorageAccess.checkStorage();
-		}
-		#end
-		#if windows
-		if (SaveData.get(ALLOW_FILESYS))
-		{
-			StorageAccess.checkStorage();
-		}
-		#end
 		#end
 
 		FlxG.keys.preventDefaultKeys = [TAB];
@@ -95,11 +81,6 @@ class TitleState extends MusicBeatState
 		Main.setFonts();
 
 		curBeat = 0; //just in case
-
-		if (FlxG.save.data.weekCompleted != null)
-		{
-			StoryMenuState.weekCompleted = FlxG.save.data.weekCompleted;
-		}
 
 		#if desktop
 		DiscordClient.initialize();

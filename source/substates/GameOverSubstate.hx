@@ -98,7 +98,7 @@ class GameOverSubstate extends MusicBeatSubstate
 				removeVirtualPad();
 				#end
 
-				MusicBeatState.switchState(PlayState.isStoryMode ? new StoryMenuState() : new FreeplayState());
+				MusicBeatState.switchState(new FreeplayState());
 
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));
 			}, false);

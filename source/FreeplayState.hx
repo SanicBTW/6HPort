@@ -76,9 +76,6 @@ class FreeplayState extends MusicBeatState
 
 		for (i in 0...WeekData.weeksList.length)
 		{
-			if (weekIsLocked(WeekData.weeksList[i]))
-				continue;
-
 			var leWeek:WeekData = WeekData.weeksLoaded.get(WeekData.weeksList[i]);
 
 			for (song in leWeek.songs)
@@ -197,14 +194,6 @@ class FreeplayState extends MusicBeatState
 	public static function addSong(songName:String, weekNum:Int, songCharacter:String, color:Int, intStorage:Bool = false)
 	{
 		songs.push(new SongMetadata(songName, weekNum, songCharacter, color, intStorage));
-	}
-
-	function weekIsLocked(name:String):Bool
-	{
-		var leWeek:WeekData = WeekData.weeksLoaded.get(name);
-		return (!leWeek.startUnlocked
-			&& leWeek.weekBefore.length > 0
-			&& (!StoryMenuState.weekCompleted.exists(leWeek.weekBefore) || !StoryMenuState.weekCompleted.get(leWeek.weekBefore)));
 	}
 
 	var instPlaying:Int = -1;
@@ -380,13 +369,6 @@ class FreeplayState extends MusicBeatState
 
 	function changeDiff(change:Int = 0)
 	{
-		curDifficulty += change;
-
-		if (curDifficulty < 0)
-			curDifficulty = CoolUtil.difficulties.length - 1;
-		if (curDifficulty >= CoolUtil.difficulties.length)
-			curDifficulty = 0;
-
 		lastDifficultyName = CoolUtil.difficulties[curDifficulty];
 
 		#if !switch
